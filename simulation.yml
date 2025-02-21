@@ -63,7 +63,6 @@ pdi:
             class ProcessActor:
                 def __init__(self):
                     self.data_queues = []  # Simulation data will be stored here
-                    self.offset = int(rank)  # Rank of the process that creates the actor
                     self.control = [0 for _ in range(iterations)]  # Number of processes that have stored the data on each iteration
                     for i in range(mpi_total):
                         self.data_queues.append([None for _ in range(iterations)])
@@ -100,7 +99,7 @@ pdi:
                     while np.sum(self.control[:i + 1]) < (mpi_total * (i + 1)):
                         pass
 
-                    tasks = [process_task.remote(mpid + self.offset, i, RayList(self.data_queues[mpid][:i + 1])) \
+                    tasks = [process_task.remote(mpid, i, RayList(self.data_queues[mpid][:i + 1])) \
                             for mpid in range(mpi_total)]
 
                     gc.collect()
