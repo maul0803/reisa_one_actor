@@ -105,7 +105,6 @@ class Reisa:
         :return: Processed results as a dictionary or global function output.
         """
         max_tasks = ray.available_resources().get('compute', 1)
-        results = []
         actor = self.get_actor()
 
         if selected_iters is None:
