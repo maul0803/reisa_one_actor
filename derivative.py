@@ -58,7 +58,7 @@ def global_func(final_results):
 
 
 # Define the range of iterations to be executed (default is from 0 to max)
-iterations = list(range(max_iterations))
+iterations = list(range(4, max_iterations))
 
 # Launch the analytics (blocking operation), kept iters paramerter means the number of iterations kept in memory before the current iteration
 result = handler.get_result(process_func, iter_func, global_func=global_func, selected_iters=iterations, kept_iters=5, timeline=False)

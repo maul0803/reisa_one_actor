@@ -119,7 +119,7 @@ class Reisa:
 
             :param rank: Rank of the process.
             :param i: Current iteration.
-            :param queue: Task queue.
+            :param queue: Data queue containing simulation values.
             :return: Processed result.
             """
             return process_func(rank, i, queue)
